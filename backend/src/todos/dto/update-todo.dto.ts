@@ -1,10 +1,6 @@
 import { IsNotEmpty, IsOptional } from "class-validator";
 
-export class CreateTodoDTO {
-
-    @IsNotEmpty()
-    description: string;
-
+export class UpdateTodoDTO {
     @IsOptional()
     done: boolean;
 }

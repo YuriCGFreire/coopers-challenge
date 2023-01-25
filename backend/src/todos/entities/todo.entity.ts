@@ -16,4 +16,9 @@ export class Todos {
     @ManyToOne(type => Users, (user) => user.todos, {onDelete: 'CASCADE'})
     user: Users;
 
+    constructor(){
+        if(!this.id){
+            this.id = uuid()
+        }
+    }
 }

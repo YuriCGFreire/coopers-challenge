@@ -13,7 +13,4 @@ export class CreateUserDto {
     })
     password: string;
 
-    @IsOptional()
-    todos: CreateTodoDTO[];
-
 }

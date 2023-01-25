@@ -15,7 +15,7 @@ export class Users {
     @Column({nullable: false, select: false})
     password: string;
 
-    @OneToMany(() => Todos, (todo) => todo.user, {eager: true, cascade: true})
+    @OneToMany(() => Todos, (todo) => todo.user, {eager: true})
     todos: Todos[];
 
     @BeforeInsert()
