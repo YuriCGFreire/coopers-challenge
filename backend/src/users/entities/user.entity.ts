@@ -1,6 +1,7 @@
-import { BeforeInsert, BeforeUpdate, Column, Entity, PrimaryColumn } from "typeorm";
+import { BeforeInsert, BeforeUpdate, Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 import {hashSync, genSaltSync} from "bcrypt-nodejs"
 import {v4 as uuid} from "uuid"
+import { Todos } from "src/todos/entities/todo.entity";
 
 
 @Entity()
@@ -13,6 +14,9 @@ export class Users {
  
     @Column({nullable: false, select: false})
     password: string;
+
+    @OneToMany(() => Todos, (todo) => todo.user, {eager: true, cascade: true})
+    todos: Todos[];
 
     @BeforeInsert()
     @BeforeUpdate()
