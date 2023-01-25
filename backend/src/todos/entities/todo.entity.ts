@@ -9,6 +9,9 @@ export class Todos {
 
     @Column({default: false})
     done: boolean;
+
+    @Column({nullable: false})
+    description: string;
     
     @ManyToOne(type => Users, (user) => user.todos, {onDelete: 'CASCADE'})
     user: Users;
