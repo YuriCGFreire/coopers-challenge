@@ -1,0 +1,24 @@
+version: '3.0' 
+
+services:
+
+  api: 
+    container_name: Coopers-API
+    build: ./backend
+    ports:
+      - "3003:3003"
+    volumes: 
+      - ./backend:/home/api
+      - /home/api/node_modules
+    depends_on:
+      - database
+
+  database: 
+    image: postgres:latest
+    container_name: Coopers-DB
+    environment:
+      POSTGRES_DB: coopers-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: coopers-db-challenge
+    ports:
+      - "5444:5432"
