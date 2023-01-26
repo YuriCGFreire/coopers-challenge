@@ -1,14 +1,16 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { CreateTodoDTO } from './dto/create-todo.dto';
 import { TodosService } from './todos.service';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('todos')
+@UseGuards(AuthGuard('jwt'))
 export class TodosController {
   constructor(private readonly todosService: TodosService) {}
 
   @Post('/user/:userId')
-  async createTodo(@Body() createTodoDTO: CreateTodoDTO, @Param('userId') userId: string ){
-    return this.todosService.createTodo(createTodoDTO, userId)
+  async createTodo(@Body() body: CreateTodoDTO, @Param('userId') userId: string ){
+    return this.todosService.createTodo(body, userId)
   }
 
   @Get('/:todoId')

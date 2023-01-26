@@ -32,8 +32,17 @@ export class UsersService {
     }
 
     async getUserById(userId: string){
-        return await this.usersRepository.findOne({
+        const user = await this.usersRepository.findOne({
             where: {id: userId}
         }) 
+        return user
+    }
+
+    async getUserByNameForValidateAuth(user_name:string){
+        const user = await this.usersRepository.findOneOrFail({
+            where: {user_name: user_name},
+            select: ["id", "user_name", 'password']
+        })
+        return user
     }
 }

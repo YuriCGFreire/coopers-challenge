@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { TodosModule } from './todos/todos.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { TodosModule } from './todos/todos.module';
     } as TypeOrmModuleOptions),
     UsersModule,
     TodosModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],

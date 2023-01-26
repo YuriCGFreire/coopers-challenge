@@ -9,7 +9,7 @@ export class CreateUserDto {
     @IsNotEmpty()
     @MinLength(8)
     @Matches(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/, {
-        message: "A senha precisa conter pelos menos uma letra maiúscula, um caractere especial e números"
+        message: "A senha precisa conter pelos menos uma letra maiúscula, uma letra minuscula, um caractere especial e números"
     })
     password: string;
 
